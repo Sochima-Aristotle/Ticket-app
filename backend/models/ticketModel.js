@@ -1,11 +1,12 @@
 const mongoose = require("mongoose");
 const { stringify } = require("uuid");
 
-const userSchema = mongoose.Schema(
+const ticketSchema = mongoose.Schema(
   {
-    name: {
-      type: String,
-      required: [true, "Please add a name"]
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: User
     },
 
     email: {

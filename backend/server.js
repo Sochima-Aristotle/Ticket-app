@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {
-  res.json({ message: "Can do more, and after it shall make sense" });
+  res.json({ message: "Message coming from server backend:5000" });
 });
 
 app.use("/api/users", require("./route/useRoutes"));
