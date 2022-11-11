@@ -1,26 +1,29 @@
 const mongoose = require("mongoose");
 const { stringify } = require("uuid");
+const User = require("./userModels");
 
 const ticketSchema = mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
-      ref: User
+      ref: "User"
     },
 
-    email: {
+    product: {
       type: String,
-      required: [true, "Please add an email"]
+      required: [true, "Please enter a product"],
+      enum: ["android", "iPhone", "HP", "macbook pro"]
     },
-    password: {
+    description: {
       type: String,
-      required: [true, "Please add a password"]
+      required: [true, "Please enter a description"]
     },
-    isAdmin: {
-      type: Boolean,
+    status: {
+      type: String,
       required: true,
-      default: false
+      enum: ["new", "open", "close"],
+      default: "new"
     }
   },
   {
@@ -28,4 +31,4 @@ const ticketSchema = mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("user", userSchema);
+module.exports = mongoose.model("Ticket", ticketSchema);

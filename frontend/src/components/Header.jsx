@@ -8,7 +8,13 @@ import { login, reset } from '../features/auth/authSlice'
 function Header() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const {user} = useSelector((state)=> state.auth)
+        const {user} = useSelector((state)=> {
+            console.log(state, 'I am state')
+       return  state.auth
+        })
+    
+
+    console.log(user, 'this is a user');
 
     const onLogout = () =>{
         dispatch(login())
@@ -23,7 +29,7 @@ function Header() {
              
         </div>
         <ul>
-           {user ? (
+           {!user ? (
              
                    <>
                    <li>

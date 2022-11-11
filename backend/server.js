@@ -17,7 +17,9 @@ app.get("/", (req, res) => {
   res.json({ message: "Message coming from server backend:5000" });
 });
 
+// routes
 app.use("/api/users", require("./route/useRoutes"));
+app.use("/api/tickets", require("./route/ticketRoutes"));
 app.use(errorHandler);
 
 app.listen(PORT, () => console.log(`Server started on PORT: ${PORT}`));
