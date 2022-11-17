@@ -26,6 +26,7 @@ function Register() {
   useEffect(()=>{
     if(isError){
       toast.error(message)
+      // console.log(`I am ${message} from register bl`);
     }
     if(isSuccess || user){
       navigate('/')

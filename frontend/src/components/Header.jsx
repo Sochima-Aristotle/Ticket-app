@@ -2,7 +2,7 @@ import React from 'react'
 import {FaSignInAlt, FaSignOutAlt, FaHome, FaUser} from 'react-icons/fa'
 import {Link, useNavigate} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
-import { login, reset } from '../features/auth/authSlice'
+import { logout, reset } from '../features/auth/authSlice'
 
 
 function Header() {
@@ -17,7 +17,7 @@ function Header() {
     console.log(user, 'this is a user');
 
     const onLogout = () =>{
-        dispatch(login())
+       dispatch(logout())
         dispatch(reset())
 
         navigate('/')

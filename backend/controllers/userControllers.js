@@ -57,6 +57,7 @@ const loginUser = asyncHandler(async (req, res) => {
   const { password, email } = req.body;
 
   const user = await User.findOne({ email });
+  console.log("user", user);
   // check if password match
   if (user && (await bcrypt.compare(password, user.password))) {
     res.status(200).json({
@@ -90,7 +91,7 @@ const getme = asyncHandler(async (req, res) => {
 
 // Generate Token
 const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRETE, {
+  return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: "45d"
   });
 };

@@ -27,13 +27,15 @@ function Login() {
 
   useEffect(()=>{
     if(isError){
+      console.log(`I am ${message}`);
       toast.error(message)
     }
     if(isSuccess || user){
+      console.log(`I am ${isSuccess} or ${user}`);
       navigate('/')
     }
     dispatch(reset())
-  }, [isSuccess, isError, user, message,dispatch, navigate])
+  }, [isSuccess, isError, user, message, dispatch, navigate])
 
  const onChange = e=>{
    setFormData((prevState)=> ({
@@ -56,7 +58,7 @@ const onSubmit = e =>{
     }
     dispatch(login(useData))
    
-      toast.success('Welcome Back')
+      // toast.success('Welcome Back')
     
 }
 
