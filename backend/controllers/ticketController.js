@@ -7,7 +7,6 @@ const Ticket = require("../models/ticketModel");
 // @access private
 
 const getTickets = asyncHandler(async (req, res) => {
-  // res.send("Here I am");
   const user = await User.findById(req.user.id);
   if (!user) {
     res.status(401);
@@ -15,7 +14,8 @@ const getTickets = asyncHandler(async (req, res) => {
   }
 
   const tickets = await Ticket.find({ User: req.user.id });
-  res.status(200).json({ message: "Get tickets" });
+  // res.status(200).json({ message: "Get tickets" });
+  res.status(200).json(tickets);
 });
 
 // @desc User ticket
@@ -24,6 +24,7 @@ const getTickets = asyncHandler(async (req, res) => {
 
 const getTicket = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user.id);
+
   if (!user) {
     res.status(401);
     throw new Error("User not found");
@@ -33,10 +34,10 @@ const getTicket = asyncHandler(async (req, res) => {
 
   if (!ticket) {
     res.status(404);
-    throw new Error("Ticket");
+    throw new Error("Ticket not found");
   }
 
-  if (ticket.user.toString() === !res.user.id) {
+  if (ticket.user.toString() == !req.user.id) {
     res.status(401);
     throw new Error("Not authorised");
   }

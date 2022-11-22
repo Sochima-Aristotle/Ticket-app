@@ -9,12 +9,12 @@ function Header() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
         const {user} = useSelector((state)=> {
-            console.log(state, 'I am state')
+            
        return  state.auth
         })
     
 
-    console.log(user, 'this is a user');
+    
 
     const onLogout = () =>{
        dispatch(logout())

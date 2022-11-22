@@ -22,6 +22,7 @@ function NewTicket() {
 
     useEffect(()=>{
         if(isError){
+            
             toast.error(message)
         }
         if(isSuccess){
@@ -33,7 +34,7 @@ function NewTicket() {
 
     const onSubmit = e =>{
         e.preventDefault()
-        console.log('object');
+        
         dispatch(createTicket({product, description}))
     }
     if(isLoading){

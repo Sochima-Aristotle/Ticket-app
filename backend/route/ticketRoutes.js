@@ -12,6 +12,10 @@ const {
 
 router.route("/").get(protect, getTickets).post(protect, createTickets);
 
+// Re-route into note router
+const noteRoute = require("./noteRoute");
+router.use("./:ticketId/notes", noteRoute);
+
 router
   .route("/:id")
   .get(protect, getTicket)

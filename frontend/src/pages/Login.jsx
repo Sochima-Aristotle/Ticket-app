@@ -27,11 +27,11 @@ function Login() {
 
   useEffect(()=>{
     if(isError){
-      console.log(`I am ${message}`);
+      
       toast.error(message)
     }
     if(isSuccess || user){
-      console.log(`I am ${isSuccess} or ${user}`);
+     
       navigate('/')
     }
     dispatch(reset())

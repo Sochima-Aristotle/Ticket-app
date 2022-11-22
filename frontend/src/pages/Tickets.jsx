@@ -6,6 +6,7 @@ import TicketItem from '../components/TicketItem'
 
 const Tickets = () => {
     const {isLoading, tickets, isSuccess} = useSelector((state) => state.tickets)
+    
     const dispatch = useDispatch()
 
     useEffect(()=>{
@@ -30,10 +31,10 @@ const Tickets = () => {
           <div>Status</div>
           <div></div>
         </div>
-        {/* {console.log(`${tickets} is the ticket you are looking for`)} */}
+        
         {tickets.map((ticket)=>(
           <TicketItem key={ticket._id} ticket={ticket} />
-          
+           
         ))}
       </div>
       </>
